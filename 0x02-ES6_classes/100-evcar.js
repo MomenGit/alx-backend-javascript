@@ -10,10 +10,6 @@ export default class EVCar extends Car {
     return this._range;
   }
 
-  cloneCar() {
-    return new this.constructor[Symbol.species]();
-  }
-
   static get [Symbol.species]() {
     return Car;
   }
