@@ -30,12 +30,10 @@ function countStudents(path) {
   const students = processStudentsData(data);
   const fields = new Set(students.map((value) => value.field));
   const studentsByField = [];
-  fields.forEach((field) =>
-    studentsByField.push({
-      fieldName: field,
-      fieldStudents: processFieldStudents(students, field),
-    }),
-  );
+  fields.forEach((field) => studentsByField.push({
+    fieldName: field,
+    fieldStudents: processFieldStudents(students, field),
+  }));
 
   console.log(`Number of students: ${students.length}`);
   studentsByField.forEach((value) => {
