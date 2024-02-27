@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const fs = require('node:fs');
+const fs = require('fs');
 
 function countStudents(path) {
   if (!fs.existsSync(path)) {
@@ -29,10 +29,12 @@ function countStudents(path) {
   const students = processStudentsData(data);
   const fields = new Set(students.map((value) => value.field));
   const studentsByField = [];
-  fields.forEach((field) => studentsByField.push({
-    fieldName: field,
-    fieldStudents: processFieldStudents(students, field),
-  }));
+  fields.forEach((field) =>
+    studentsByField.push({
+      fieldName: field,
+      fieldStudents: processFieldStudents(students, field),
+    }),
+  );
 
   console.log(`Number of students: ${students.length}`);
   studentsByField.forEach((value) => {
