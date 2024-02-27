@@ -7,17 +7,18 @@ function countStudents(path) {
   }
   function processStudentsData(csv) {
     const lines = csv.split('\n');
-    lines.pop();
     lines.shift();
-    const students = lines.map((element) => {
-      const student = element.split(',');
-      return {
-        firstName: student[0],
-        lastName: student[1],
-        age: student[2],
-        field: student[3],
-      };
-    });
+    const students = lines
+      .filter((value) => value !== '')
+      .map((element) => {
+        const student = element.split(',');
+        return {
+          firstName: student[0],
+          lastName: student[1],
+          age: student[2],
+          field: student[3],
+        };
+      });
     return students;
   }
 
@@ -29,12 +30,10 @@ function countStudents(path) {
   const students = processStudentsData(data);
   const fields = new Set(students.map((value) => value.field));
   const studentsByField = [];
-  fields.forEach((field) =>
-    studentsByField.push({
-      fieldName: field,
-      fieldStudents: processFieldStudents(students, field),
-    }),
-  );
+  fields.forEach((field) => studentsByField.push({
+    fieldName: field,
+    fieldStudents: processFieldStudents(students, field),
+  }));
 
   console.log(`Number of students: ${students.length}`);
   studentsByField.forEach((value) => {
