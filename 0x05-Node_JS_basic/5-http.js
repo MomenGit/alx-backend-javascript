@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const http = require('node:http');
+const http = require('http');
 const fs = require('fs/promises');
 
 const host = 'localhost';
