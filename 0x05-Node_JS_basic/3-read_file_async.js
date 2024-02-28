@@ -32,6 +32,7 @@ async function countStudents(path) {
       fieldName: field,
       fieldStudents: processFieldStudents(students, field),
     }));
+
     console.log(`Number of students: ${students.length}`);
     studentsByField.forEach((value) => {
       const studentNames = value.fieldStudents
