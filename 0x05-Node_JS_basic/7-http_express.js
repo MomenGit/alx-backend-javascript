@@ -61,9 +61,9 @@ app.get('/students', (req, res) => {
     .then((data) => {
       res.send(`This is the list of our students\n${data}`);
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(404);
-      res.send(err.message);
+      res.send('This is the list of our students Cannot load the database');
     });
 });
 
