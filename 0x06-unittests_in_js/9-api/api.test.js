@@ -16,6 +16,12 @@ describe('Index page', () => {
   });
 });
 describe('/cart/:id route', () => {
+  it('Correct result when id is number', (done) => {
+    request.get(`${uri}/cart/12`, (err, res, body) => {
+      expect(body).to.equal('Payment methods for cart 12');
+      done();
+    });
+  });
   it('Correct status code when id is number', (done) => {
     request.get(`${uri}/cart/12`, (err, res, body) => {
       expect(res.statusCode).to.equal(200);
